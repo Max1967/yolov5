@@ -1,5 +1,5 @@
 import platform,socket,re,uuid,json,psutil,logging
-
+import streamlit as st
 def getSystemInfo():
     try:
         info={}
@@ -16,4 +16,6 @@ def getSystemInfo():
     except Exception as e:
         logging.exception(e)
 
-print(json.loads(getSystemInfo()))
+a = json.loads(getSystemInfo())
+st.title('DEMO')
+st.write(str(a))
