@@ -1,6 +1,6 @@
 import platform,socket,re,uuid,json,psutil,logging
 import streamlit as st
-import torch
+#import torch
 def getSystemInfo():
     try:
         info={}
