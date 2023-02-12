@@ -1,7 +1,1 @@
 psutil
-platform
-socket
-re
-uuid
-json
-logging
