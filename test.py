@@ -1,5 +1,7 @@
 import platform,socket,re,uuid,json,psutil,logging
 import streamlit as st
+import time
+import requests
 #import torch
 def getSystemInfo():
     try:
@@ -23,10 +25,8 @@ st.title('DEMO')
 st.write(str(a))
 import speedtest
 speed_test = speedtest.Speedtest()
-#download_speed = speed_test.download()
-#upload_speed = speed_test.upload()
-for i in range(10):
-    download_speed = speed_test.download()
-    upload_speed = speed_test.upload()
-    st.write(str(download_speed/1024/1024))
-    st.write(str(upload_speed/1024/1024))
+download_speed = speed_test.download()
+upload_speed = speed_test.upload()
+t = time.time()
+requests.get("https://speedtest-ams.turnkeyinternet.net/10000mb.bin", stream=True)
+st.write(str(time.time() - t))
