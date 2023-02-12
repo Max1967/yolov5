@@ -21,4 +21,9 @@ def getSystemInfo():
 a = json.loads(getSystemInfo())
 st.title('DEMO')
 st.write(str(a))
-st.write(str(torch.cuda.get_device_properties(0)))
+import speedtest
+speed_test = speedtest.Speedtest()
+download_speed = speed_test.download()
+upload_speed = speed_test.upload()
+st.write(str(download_speed))
+st.write(str(upload_speed))
