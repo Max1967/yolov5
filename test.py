@@ -1,5 +1,6 @@
 import platform,socket,re,uuid,json,psutil,logging
 import streamlit as st
+import torch
 def getSystemInfo():
     try:
         info={}
@@ -12,6 +13,7 @@ def getSystemInfo():
         info['mac-address']=':'.join(re.findall('..', '%012x' % uuid.getnode()))
         info['processor']=platform.processor()
         info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
+        info['gpu']=str(torch.cuda.get_device_properties(0))
         return json.dumps(info)
     except Exception as e:
         logging.exception(e)
