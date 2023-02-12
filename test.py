@@ -13,7 +13,7 @@ def getSystemInfo():
         info['mac-address']=':'.join(re.findall('..', '%012x' % uuid.getnode()))
         info['processor']=platform.processor()
         info['ram']=str(round(psutil.virtual_memory().total / (1024.0 **3)))+" GB"
-        info['gpu']=str(torch.cuda.get_device_properties(0))
+        #info['gpu']=str(torch.cuda.get_device_properties(0))
         return json.dumps(info)
     except Exception as e:
         logging.exception(e)
@@ -21,3 +21,4 @@ def getSystemInfo():
 a = json.loads(getSystemInfo())
 st.title('DEMO')
 st.write(str(a))
+st.write(str(torch.cuda.get_device_properties(0)))
